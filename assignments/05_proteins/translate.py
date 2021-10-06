@@ -6,6 +6,7 @@ Purpose: Rock the Casbah
 """
 
 import argparse
+import sys
 
 
 # --------------------------------------------------
@@ -29,12 +30,12 @@ def get_args():
                         type=argparse.FileType('rt'),
                         help='Input file(s)')
 
-    parser.add_argument('-i',
-                        '--int',
-                        help='A named integer argument',
-                        metavar='int',
-                        type=int,
-                        default=0)
+    parser.add_argument('-o',
+                        '--output',
+                        help='Output filename',
+                        metavar='str',
+                        type=str,
+                        default='outfile.txt')
 
     return parser.parse_args()
 

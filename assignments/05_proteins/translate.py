@@ -25,15 +25,14 @@ def get_args():
     parser.add_argument('-c',
                         '--codons',
                         metavar='FILE',
-                        nargs='*',
-                        default=[sys.stdin],
+                        required=True,
                         type=argparse.FileType('rt'),
-                        help='Input file(s)')
+                        help='Input codon file')
 
     parser.add_argument('-o',
                         '--output',
-                        help='Output filename',
-                        metavar='str',
+                        help='Output file',
+                        metavar='FILE',
                         type=argparse.FileType('wt'),
                         default='outfile.txt')
 

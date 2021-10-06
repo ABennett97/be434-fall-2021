@@ -34,7 +34,7 @@ def get_args():
                         help='Output file',
                         metavar='FILE',
                         type=argparse.FileType('wt'),
-                        default='outfile.txt')
+                        default='out.txt')
 
     return parser.parse_args()
 

@@ -23,10 +23,11 @@ def get_args():
 
     parser.add_argument('-c',
                         '--codons',
-                        help='A named string argument',
-                        metavar='str',
-                        type=str,
-                        default='')
+                        metavar='FILE',
+                        nargs='*',
+                        default=[sys.stdin],
+                        type=argparse.FileType('rt'),
+                        help='Input file(s)')
 
     parser.add_argument('-i',
                         '--int',

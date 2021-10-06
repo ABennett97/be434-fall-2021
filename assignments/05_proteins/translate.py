@@ -6,7 +6,6 @@ Purpose: Rock the Casbah
 """
 
 import argparse
-import sys
 
 
 # --------------------------------------------------
@@ -19,7 +18,6 @@ def get_args():
 
     parser.add_argument('sequence',
                         metavar='str',
-                        nargs='+',
                         help='DNA or RNA sequence')
 
     parser.add_argument('-c',
@@ -45,6 +43,20 @@ def main():
 
     args = get_args()
     
+    codon_table = {}
+    for line in args.codons:
+        key, val = line.split()
+        codon_table[key] = val
+
+    k = 3
+    seq = args.sequence.upper()
+    protein = ''
+    for codon in [seq[i:i + k] for i in range(0, len(seq), k)]:
+        protein += codon_table.get(codon, '-')
+        # print(codon, codon_table.get(codon, '-'), end='')
+        
+    print(protein, file=args.outfile)
+    print(f'Output written to "{args.outfile.name}".')
 
 
 # --------------------------------------------------

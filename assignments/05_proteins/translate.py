@@ -13,15 +13,16 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Sequence to Amino Acid',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('positional',
+    parser.add_argument('sequence',
                         metavar='str',
-                        help='A positional argument')
+                        nargs='+',
+                        help='DNA or RNA sequence')
 
-    parser.add_argument('-a',
-                        '--arg',
+    parser.add_argument('-c',
+                        '--codons',
                         help='A named string argument',
                         metavar='str',
                         type=str,
@@ -54,17 +55,7 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    file_arg = args.file
-    flag_arg = args.on
-    pos_arg = args.positional
-
-    print(f'str_arg = "{str_arg}"')
-    print(f'int_arg = "{int_arg}"')
-    print('file_arg = "{}"'.format(file_arg.name if file_arg else ''))
-    print(f'flag_arg = "{flag_arg}"')
-    print(f'positional = "{pos_arg}"')
+    
 
 
 # --------------------------------------------------

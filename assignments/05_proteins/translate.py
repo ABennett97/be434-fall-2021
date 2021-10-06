@@ -36,18 +36,6 @@ def get_args():
                         type=int,
                         default=0)
 
-    parser.add_argument('-f',
-                        '--file',
-                        help='A readable file',
-                        metavar='FILE',
-                        type=argparse.FileType('rt'),
-                        default=None)
-
-    parser.add_argument('-o',
-                        '--on',
-                        help='A boolean flag',
-                        action='store_true')
-
     return parser.parse_args()
 
 

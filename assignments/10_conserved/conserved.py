@@ -6,8 +6,6 @@ Purpose: Rock the Casbah
 """
 
 import argparse
-import os
-from Bio import SeqIO
 
 
 # --------------------------------------------------
@@ -23,13 +21,6 @@ def get_args():
                         type=argparse.FileType('rt'),
                         help='Input file(s)')
 
-    parser.add_argument('-o',
-                        '--outdir',
-                        help='Output directory',
-                        metavar='str',
-                        type=str,
-                        default='split')
-
     return parser.parse_args()
 
 
@@ -38,13 +29,18 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    out_dir = args.outdir
+    sequences = args.file.read().splitlines()
 
-    if not os.path.isdir(out_dir):
-        os.makedirs(out_dir)
-
-    for fh in args.file:
-        parser = SeqIO.parse(fh, 'fasta')
+    print('\n'.join(sequences))
+    for i in range(len(sequences[0])):
+        characters = []
+        for seq in sequences:
+            characters += seq[i]
+        if all([characters[0] == chars for chars in characters]):
+            print('|', end='')
+        else:
+            print('X', end='')
+    print()
 
 
 # --------------------------------------------------

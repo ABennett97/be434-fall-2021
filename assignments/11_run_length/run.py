@@ -46,13 +46,13 @@ def rle(seq):
         count = 1
         ch = seq[i]
         j = i
-        while (j < len(seq)-1):     
-            if (seq[j] == seq[j + 1]): 
-                count = count + 1
+        while (j < len(seq)-1):
+            if (seq[j] == seq[j + 1]):
+                count += 1
                 j = j + 1
-            else: 
+            else:
                 break
-        encoded = encoded + str(count) + ch
+        encoded = encoded + ch + (str(count) if count > 1 else '')
         i = j + 1
     return encoded
 

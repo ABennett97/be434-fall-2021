@@ -18,8 +18,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('text',
-                        metavar='text',
-                        type=str,
+                        metavar='str',
                         help='DNA text or file')
 
     args = parser.parse_args()
@@ -39,7 +38,7 @@ def main():
         print(rle(sequence))
 
 
-# # --------------------------------------------------
+# --------------------------------------------------
 def rle(seq):
     encoded = ""
     i = 0

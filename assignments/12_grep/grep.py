@@ -19,7 +19,6 @@ def get_args():
 
     parser.add_argument('pattern',
                         metavar='PATTERN',
-                        nargs='+',
                         help='Search pattern')
     
     parser.add_argument('files',
@@ -30,8 +29,7 @@ def get_args():
 
     parser.add_argument('-i',
                         '--insensitive',
-                        type=str
-                        action='store'
+                        action='store_true'
                         help='Case-insensitive search',
                         default='FALSE')
 
@@ -50,10 +48,13 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    print(args)
-    
-    # if args.outfile != sys.stdout:
-    #     print(f'Done, see output in "{args.outfile.name}"')
+    numfiles = len(args.files)
+
+    for filehand in args.files:
+        for line in filehand:
+            if re.search(args.pattern, line, re.IGNORECASE if args.insensitive else 0):
+                print('{}{}'.format(f'{filehand}:' if numfiles > 1 else '',
+                        end='', file=args.outfile)
 
 
 # --------------------------------------------------

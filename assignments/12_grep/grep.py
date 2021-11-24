@@ -2,11 +2,12 @@
 """
 Author : abennett1 <abennett1@localhost>
 Date   : 2021-11-23
-Purpose: Rock the Casbah
+Purpose: Pseudo grep program
 """
 
 import argparse
 import sys
+import re
 
 
 # --------------------------------------------------
@@ -14,13 +15,13 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='pseudo grep program',
+        description='Pseudo grep program',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('pattern',
                         metavar='PATTERN',
-                        help='Search pattern')
-    
+                        help='A positional argument')
+
     parser.add_argument('files',
                         metavar='FILE',
                         nargs='+',
@@ -29,9 +30,8 @@ def get_args():
 
     parser.add_argument('-i',
                         '--insensitive',
-                        action='store_true',
                         help='Case-insensitive search',
-                        default=FALSE)
+                        action='store_true')
 
     parser.add_argument('-o',
                         '--outfile',
@@ -52,9 +52,10 @@ def main():
 
     for filehand in args.files:
         for line in filehand:
-            if re.search(args.pattern, line, re.IGNORECASE if args.insensitive else 0):
-                print('{}{}'.format(f'{filehand}:' if numfiles > 1 else '',
-                        end='', file=args.outfile)
+            if re.search(args.pattern, line,
+                         re.IGNORECASE if args.insensitive else 0):
+                print('{}{}'.format(f'{filehand.name}:' if numfiles > 1
+                                    else '', line), end='', file=args.outfile)
 
 
 # --------------------------------------------------

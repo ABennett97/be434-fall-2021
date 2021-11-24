@@ -31,7 +31,7 @@ def get_args():
                         '--insensitive',
                         action='store_true'
                         help='Case-insensitive search',
-                        default='FALSE')
+                        default=FALSE)
 
     parser.add_argument('-o',
                         '--outfile',

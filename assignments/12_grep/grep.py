@@ -29,7 +29,7 @@ def get_args():
 
     parser.add_argument('-i',
                         '--insensitive',
-                        action='store_true'
+                        action='store_true',
                         help='Case-insensitive search',
                         default=FALSE)
 

@@ -28,7 +28,7 @@ def get_args():
                         help='Input codon file')
 
     parser.add_argument('-o',
-                        '--output',
+                        '--outfile',
                         help='Output file',
                         metavar='FILE',
                         type=argparse.FileType('wt'),
@@ -42,7 +42,7 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    
+
     codon_table = {}
     for line in args.codons:
         key, val = line.split()
@@ -54,7 +54,7 @@ def main():
     for codon in [seq[i:i + k] for i in range(0, len(seq), k)]:
         protein += codon_table.get(codon, '-')
         # print(codon, codon_table.get(codon, '-'), end='')
-        
+
     print(protein, file=args.outfile)
     print(f'Output written to "{args.outfile.name}".')
 
